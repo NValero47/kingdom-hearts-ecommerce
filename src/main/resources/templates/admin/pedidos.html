@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="#{pedidos.titulo}">Gestionar pedidos</title>
+    <link rel="stylesheet" th:href="@{/css/admin.css}">
+</head>
+<body>
+
+<div th:insert="fragments/general.html :: menu"></div>
+
+<main class="admin-container">
+    <h1><span th:text="#{pedidos.titulo}"></span></h1>
+
+    <div class="productos-grid">
+        <div class="producto-card" th:each="pedido : ${pedidos}">
+            <div class="producto-info">
+                <p><strong><span th:text="#{pedidos.nombre}"></span>:</strong> <span th:text="${pedido.nombreCompleto}"></span></p>
+                <p><strong><span th:text="#{pedidos.direccion}"></span>:</strong> <span th:text="${pedido.direccion}"></span></p>
+                <p><strong><span th:text="#{pedidos.estadoPedido}"></span>:</strong> <span th:text="${pedido.estado}"></span></p>
+            </div>
+            <div class="producto-actions">
+                <a class="btn-secondary" th:href="@{${'verDetallesPedido?id=' + pedido.id}}"><span th:text="#{acciones.verDetalles}"></span></a>
+            </div>
+        </div>
+    </div>
+</main>
+
+</body>
+</html>

@@ -1,0 +1,48 @@
+<h1>注文</h1>
+
+<div class="productos-grid carrito-grid">
+{{#.}}
+  <div class="producto-card carrito-card">
+    <h2>注文 #{{ID}}</h2>
+
+    <!-- 注文内の商品 -->
+    <div class="productos-grid">
+      {{#PRODUCTOS}}
+      <div class="producto-card">
+        <img alt="画像が読み込めません" src="mostrar_imagen?id={{PRODUCTO_ID}}">
+
+        <div class="producto-info">
+          <p><span>名前:</span> {{NOMBRE}}</p>
+          <p><span>価格:</span> {{PRECIO}} €</p>
+          <p><span>数量:</span> {{CANTIDAD}}</p>
+        </div>
+      </div>
+      {{/PRODUCTOS}}
+    </div>
+
+    <!-- 配送情報 -->
+    <div class="producto-info">
+      <p><span>氏名:</span> {{NOMBRE_COMPLETO}}</p>
+      <p><span>住所:</span> {{DIRECCION}}</p>
+      <p><span>建物:</span> {{PORTAL}}</p>
+      <p><span>階:</span> {{PISO}}</p>
+      <p><span>電話番号:</span> {{TELEFONO}}</p>
+      <p><span>状態:</span> {{ESTADO}}</p>
+    </div>
+
+    <!-- 支払い情報 -->
+    <div class="producto-info">
+      <p><span>カード名義人:</span> {{TITULAR_TARJETA}}</p>
+      <p><span>カード番号:</span> {{NUMERO_TARJETA_MASKED}}</p>
+      <p><span>カード種類:</span> {{TIPO_TARJETA_TEXTO}}</p>
+    </div>
+
+    <!-- 顧客情報 -->
+    <div class="producto-info">
+      <p><span>性格:</span> {{PERSONALIDAD_TEXTO}}</p>
+      <p><span>コメント:</span> {{COMENTARIO}}</p>
+    </div>
+
+  </div>
+{{/.}}
+</div>

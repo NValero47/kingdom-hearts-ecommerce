@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{productos.registrarTitulo}">Registrar Producto</title>
+<link rel="stylesheet" th:href="@{/css/admin.css}">
+</head>
+<body>
+
+<div th:insert="fragments/general.html :: menu"></div>
+
+<main class="admin-container">
+    <h1><span th:text="#{productos.registrarNuevo}"></span></h1>
+
+    <form th:action="guardarProducto" th:object="${nuevoProducto}" method="post" enctype="multipart/form-data" class="formulario-admin">
+        <div class="form-group">
+            <label for="nombre"><span th:text="#{producto.nombre}"></span>:</label>
+            <input type="text" id="nombre" th:field="*{nombre}" th:placeholder="#{producto.placeholderNombre}" required>
+            <span class="error" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></span>
+        </div>
+        <div class="form-group">
+            <label for="precio"><span th:text="#{producto.precio}"></span> (€):</label>
+            <input type="number" step="0.01" id="precio" th:field="*{precio}" th:placeholder="#{producto.placeholderPrecio}" required>
+            <span class="error" th:if="${#fields.hasErrors('precio')}" th:errors="*{precio}"></span>
+        </div>
+        <div class="form-group">
+            <label for="descripcion"><span th:text="#{producto.descripcion}"></span>:</label>
+            <textarea id="descripcion" th:field="*{descripcion}" rows="3" th:placeholder="#{producto.placeholderDescripcion}" required></textarea>
+            <span class="error" th:if="${#fields.hasErrors('descripcion')}" th:errors="*{descripcion}"></span>
+        </div>
+        <div class="form-group">
+            <label for="estado"><span th:text="#{producto.estado}"></span>:</label>
+            <select id="estado" th:field="*{estado}" required>
+                <option value="" th:text="#{producto.seleccionaEstado}"></option>
+                <option value="Nuevo" th:text="#{producto.nuevo}"></option>
+                <option value="Usado" th:text="#{producto.usado}"></option>
+                <option value="Reacondicionado" th:text="#{producto.reacondicionado}"></option>
+            </select>
+            <span class="error" th:if="${#fields.hasErrors('estado')}" th:errors="*{estado}"></span>
+        </div>
+        <div class="form-group">
+            <label for="tipo"><span th:text="#{producto.tipo}"></span>:</label>
+            <select id="tipo" th:field="*{tipo}" required>
+                <option value="" th:text="#{producto.seleccionaTipo}"></option>
+                <option value="Videojuego" th:text="#{producto.videojuego}"></option>
+                <option value="Accesorio" th:text="#{producto.accesorio}"></option>
+                <option value="Consola" th:text="#{producto.consola}"></option>
+            </select>
+            <span class="error" th:if="${#fields.hasErrors('tipo')}" th:errors="*{tipo}"></span>
+        </div>
+        <div class="form-group">
+            <label for="stock"><span th:text="#{producto.stock}"></span>:</label>
+            <input type="number" id="stock" th:field="*{stock}" min="0" th:placeholder="#{producto.placeholderStock}" required>
+            <span class="error" th:if="${#fields.hasErrors('stock')}" th:errors="*{stock}"></span>
+        </div>
+        
+        <div class="form-group">
+            <label for="categoria"><span th:text="#{producto.categoria}"></span>:</label>
+            <select id="categoria" th:field="*{idCategoria}" required>
+				<option th:each="c : ${categorias}" th:value="${c.id}" th:text="#{'categoria.' + ${c.nombre}}">
+            </select>
+            <span class="error" th:if="${#fields.hasErrors('tipo')}" th:errors="*{tipo}"></span>
+        </div>
+        
+        <div class="form-group">
+            <label for="imagen"><span th:text="#{producto.imagen}"></span>:</label>
+            <input type="file" id="imagen" th:field="*{imagen}" accept="image/*">
+        </div>
+        <div class="form-actions">
+            <input type="submit" class="btn-primary" th:value="#{acciones.registrar}">
+        </div>
+    </form>
+</main>
+
+</body>
+</html>

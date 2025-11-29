@@ -1,0 +1,27 @@
+<h1 class="pedido-titulo">注文手続き → ステップ1</h1>
+
+<div class="pedido-paso">
+  <h2 class="pedido-subtitulo">配送先情報を入力してください</h2>
+
+  <form class="pedido-form" id="aceptar_paso_1">
+    <label for="campo_nombre">氏名：</label>
+    <input type="text" id="campo_nombre" required placeholder="例：山田 太郎" />
+
+    <label for="campo_direccion">住所：</label>
+    <input type="text" id="campo_direccion" required placeholder="例：中央通り"/>
+
+    <label for="campo_portal">番地：</label>
+    <input type="text" id="campo_portal" required placeholder="例：12" />
+
+    <label for="campo_piso">建物・部屋番号：</label>
+    <input type="text" id="campo_piso" required placeholder="例：3B">
+
+    <label for="campo_telefono">電話番号：</label>
+    <input type="text" id="campo_telefono" required placeholder="例：000 00 00 00 または +34 000 00 00 00">
+
+    <label for="campo_provincia">都道府県：</label>
+    <input type="text" id="campo_provincia" required placeholder="例：マドリード">
+
+    <input type="submit" class="btn-aceptar" value="確認"/>
+  </form>
+</div>

@@ -1,0 +1,24 @@
+<h1 class="pedido-titulo">注文手続き → ステップ2</h1>
+
+<div class="pedido-paso">
+  <h2 class="pedido-subtitulo">お支払い情報を入力してください</h2>
+  <p class="pedido-aviso">※テスト用アプリのため、本物の情報を入力しないでください</p>
+
+  <form class="pedido-form" id="aceptar_paso_2">
+
+    <label for="tipo_tarjeta">カード種類：</label>
+    <select id="tipo_tarjeta" required>
+      <option value="">選択してください</option>
+      <option value="1">VISA</option>
+      <option value="2">MasterCard</option>
+    </select>
+
+    <label for="numero_tarjeta">カード番号：</label>
+    <input type="text" id="numero_tarjeta" required placeholder="XXXX XXXX XXXX XXXX">
+
+    <label for="titular_tarjeta">名義人：</label>
+    <input type="text" id="titular_tarjeta" required placeholder="例：山田 太郎">
+
+    <input type="submit" class="btn-aceptar" value="確認">
+  </form>
+</div>

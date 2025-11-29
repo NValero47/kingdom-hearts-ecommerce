@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="#{usuarios.editar}">Editar Usuario</title>
+    <link rel="stylesheet" th:href="@{/css/admin.css}">
+</head>
+<body>
+
+<div th:insert="fragments/general.html :: menu"></div>
+
+<main class="admin-container">
+    <h1><span th:text="#{usuarios.editar}"></span></h1>
+
+    <form th:action="guardarCambiosUsuario" th:object="${usuarioEditar}" method="post" class="formulario-admin" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="nombre"><span th:text="#{usuario.nombre}"></span>:</label>
+            <input type="text" id="nombre" th:field="*{nombre}" th:placeholder="#{usuario.placeholderNombre}" required>
+            <span class="error" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></span>
+        </div>
+
+        <div class="form-group">
+            <label for="email"><span th:text="#{usuario.email}"></span>:</label>
+            <input type="email" id="email" th:field="*{email}" th:placeholder="#{usuario.placeholderEmail}" required>
+            <span class="error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+        </div>
+
+        <div class="form-group">
+            <label for="pass"><span th:text="#{usuario.contrasena}"></span> (<span th:text="#{usuarios.editarPassAviso}"></span>)</label>
+            <input type="password" id="pass" th:field="*{pass}" th:placeholder="#{usuario.placeholderContrasena}">
+            <span class="error" th:if="${#fields.hasErrors('pass')}" th:errors="*{pass}"></span>
+        </div>
+
+        <div class="form-group">
+            <label for="ciudad"><span th:text="#{usuario.ciudad}"></span>:</label>
+            <input type="text" id="ciudad" th:field="*{ciudad}" th:placeholder="#{usuario.placeholderCiudad}">
+            <span class="error" th:if="${#fields.hasErrors('ciudad')}" th:errors="*{ciudad}"></span>
+        </div>
+
+        <div class="form-group">
+            <label for="codigoPostal"><span th:text="#{usuario.codigoPostal}"></span>:</label>
+            <input type="text" id="codigoPostal" th:field="*{codigoPostal}" th:placeholder="#{usuario.placeholderCodigoPostal}">
+            <span class="error" th:if="${#fields.hasErrors('codigoPostal')}" th:errors="*{codigoPostal}"></span>
+        </div>
+
+        <div class="form-group">
+            <label for="imagen"><span th:text="#{usuario.imagen}"></span>:</label>
+            <input type="file" id="imagen" th:field="*{imagen}" accept="image/*">
+        </div>
+
+        <input type="hidden" th:field="*{id}">
+
+        <div class="form-actions">
+            <input type="submit" class="btn-secondary" th:value="#{acciones.guardarCambios}">
+            <a th:href="obtenerUsuarios" class="btn-danger"><span th:text="#{acciones.cancelar}"></span></a>
+        </div>
+    </form>
+</main>
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+<h1 class="pedido-titulo">Realizar pedido → Paso 3</h1>
+
+<div class="pedido-paso">
+  <h2 class="pedido-subtitulo">Antes de finalizar...</h2>
+  <p class="pedido-texto">Queremos conocerte un poco mejor para ofrecerte una experiencia más personalizada.</p>
+
+  <form class="pedido-form" id="aceptar_paso_3">
+
+    <label for="campo_personalidad">¿Cómo te definirías a ti mismo?</label>
+    <select id="campo_personalidad" name="campo_personalidad" required>
+      <option value="">Selecciona una opción</option>
+      <option value="1">Una persona tranquila y responsable</option>
+      <option value="2">Alguien alegre y con mucha energía</option>
+      <option value="3">Una persona creativa y original</option>
+      <option value="4">Un poco de todo, depende del día</option>
+    </select>
+
+    <label for="campo_comentario">¿Quieres añadir algún comentario adicional?</label>
+    <textarea id="campo_comentario" name="campo_comentario" maxlength="300" pattern="^[A-Za-z0-9ÁÉÍÓÚáéíóúÑñ .,!?¡¿:;()\"'\\-\\n]*$" placeholder="Ej: Me encanta recibir los pedidos bien empaquetados..." rows="4"></textarea>
+
+    <input type="submit" class="btn-aceptar" value="ACEPTAR">
+
+  </form>
+</div>

@@ -1,0 +1,2 @@
+// Codigo a ejecutar por defecto una vez importado todo
+obtenerProductos();

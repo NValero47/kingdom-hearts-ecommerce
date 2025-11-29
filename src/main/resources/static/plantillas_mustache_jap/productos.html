@@ -1,0 +1,24 @@
+<h1>商品一覧</h1>
+
+<div class="productos-grid">
+{{#array_productos}}
+  <div class="producto-card">
+    <img alt="画像を読み込めませんでした" src="mostrar_imagen?id={{ID}}">
+
+    <div class="producto-info">
+      <p><span>商品名：</span> {{NOMBRE}}</p>
+      <p><span>価格：</span> {{PRECIO}} €</p>
+      <p><span>説明：</span> {{DESCRIPCION}}</p>
+      <p><span>状態：</span> {{ESTADO}}</p>
+      <p><span>種類：</span> {{TIPO}}</p>
+      <p><span>在庫：</span> {{STOCK}}</p>
+      <p><span>カテゴリ:</span> {{NOMBRE_CATEGORIA}}</p>
+    </div>
+
+    <div class="producto-actions">
+      <a href="detallesProducto?id={{ID}}" class="btn-detalles">詳細を見る</a>
+      <a href="#" class="enlace_comprar_producto" id-producto="{{ID}}">カートに追加</a>
+    </div>
+  </div>
+{{/array_productos}}
+</div>

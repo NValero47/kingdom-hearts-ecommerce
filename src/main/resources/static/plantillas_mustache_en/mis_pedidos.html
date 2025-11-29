@@ -1,0 +1,48 @@
+<h1>Orders</h1>
+
+<div class="productos-grid carrito-grid">
+{{#.}}
+  <div class="producto-card carrito-card">
+    <h2>Order #{{ID}}</h2>
+
+    <!-- Products in the order -->
+    <div class="productos-grid">
+      {{#PRODUCTOS}}
+      <div class="producto-card">
+        <img alt="Image not loading" src="mostrar_imagen?id={{PRODUCTO_ID}}">
+
+        <div class="producto-info">
+          <p><span>Name:</span> {{NOMBRE}}</p>
+          <p><span>Price:</span> {{PRECIO}} €</p>
+          <p><span>Quantity:</span> {{CANTIDAD}}</p>
+        </div>
+      </div>
+      {{/PRODUCTOS}}
+    </div>
+
+    <!-- Shipping information -->
+    <div class="producto-info">
+      <p><span>Full Name:</span> {{NOMBRE_COMPLETO}}</p>
+      <p><span>Address:</span> {{DIRECCION}}</p>
+      <p><span>Building:</span> {{PORTAL}}</p>
+      <p><span>Floor:</span> {{PISO}}</p>
+      <p><span>Phone:</span> {{TELEFONO}}</p>
+      <p><span>Status:</span> {{ESTADO}}</p>
+    </div>
+
+    <!-- Payment information -->
+    <div class="producto-info">
+      <p><span>Cardholder:</span> {{TITULAR_TARJETA}}</p>
+      <p><span>Card Number:</span> {{NUMERO_TARJETA_MASKED}}</p>
+      <p><span>Card Type:</span> {{TIPO_TARJETA_TEXTO}}</p>
+    </div>
+
+    <!-- Customer information -->
+    <div class="producto-info">
+      <p><span>Personality:</span> {{PERSONALIDAD_TEXTO}}</p>
+      <p><span>Comment:</span> {{COMENTARIO}}</p>
+    </div>
+
+  </div>
+{{/.}}
+</div>

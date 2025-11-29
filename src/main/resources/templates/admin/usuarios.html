@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{usuarios.titulo}">Gestión de Usuarios</title>
+<link rel="stylesheet" th:href="@{/css/admin.css}">
+</head>
+<body>
+
+<div th:insert="fragments/general.html :: menu"></div>
+
+<main class="admin-container">
+    <div class="header-actions">
+        <a class="btn-primary" href="registrarUsuario"><span th:text="#{usuarios.registrar}"></span></a>
+    </div>
+
+    <div class="productos-grid">
+        <div class="producto-card" th:each="usuario : ${usuarios}">
+            <img alt="No carga la imagen" th:src="@{${'../mostrar_imagen_usuario?id='+usuario.id}}" class="producto-imagen">
+            <div class="producto-info">
+                <h3 th:text="${usuario.nombre}"></h3>
+                <p><strong><span th:text="#{usuario.email}"></span>:</strong> <span th:text="${usuario.email}"></span></p>
+                <p><strong><span th:text="#{usuario.ciudad}"></span>:</strong> <span th:text="${usuario.ciudad}"></span></p>
+                <p><strong><span th:text="#{usuario.codigoPostal}"></span>:</strong> <span th:text="${usuario.codigoPostal}"></span></p>
+            </div>
+            <div class="producto-actions">
+                <a class="btn-danger" onClick="return confirm('¿Estas seguro?')" th:href="@{${'borrarUsuario?id='+usuario.id}}"><span th:text="#{acciones.borrar}"></span></a>
+                <a class="btn-secondary" th:href="@{${'editarUsuario?id='+usuario.id}}"><span th:text="#{acciones.editar}"></span></a>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+</body>
+</html>

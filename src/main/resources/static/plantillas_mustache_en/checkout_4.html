@@ -1,0 +1,40 @@
+<h1 class="pedido-titulo">Place order → Step 4</h1>
+
+<div class="pedido-paso pedido-resumen">
+  <h2 class="pedido-subtitulo">Order summary</h2>
+
+  <h3>Order products:</h3>
+  <div id="productos_pedido" class="productos-grid">
+    {{#productos}}
+    <div class="producto-card">
+      <img alt="Image not loading" src="mostrar_imagen?id={{PRODUCTO_ID}}">
+      <div class="producto-info">
+        <p><span>Name:</span> {{NOMBRE}}</p>
+        <p><span>Unit price:</span> {{PRECIO}} €</p>
+        <p><span>Condition:</span> {{ESTADO}}</p>
+        <p><span>Quantity:</span> {{CANTIDAD}}</p>
+      </div>
+    </div>
+    {{/productos}}
+  </div>
+
+  <div class="pedido-datos">
+    <h3>Shipping details:</h3>
+    <p><strong>Full name:</strong> {{nombreCompleto}}</p>
+    <p><strong>Address:</strong> {{direccion}}</p>
+    <p><strong>Province:</strong> {{provincia}}</p>
+
+    <h3>Payment details:</h3>
+    <p><strong>Card type:</strong> {{tipoTarjetaTexto}}</p>
+    <p><strong>Card number:</strong> {{numeroTarjeta}}</p>
+    <p><strong>Cardholder:</strong> {{titularTarjeta}}</p>
+
+    <h3>Additional information:</h3>
+    <p><strong>Personality:</strong> {{personalidadTexto}}</p>
+    <p><strong>Comment:</strong> {{comentario}}</p>
+  </div>
+
+  <div class="pedido-acciones">
+    <button id="boton_confirmar_pedido" class="btn-confirmar">Confirm order</button>
+  </div>
+</div>

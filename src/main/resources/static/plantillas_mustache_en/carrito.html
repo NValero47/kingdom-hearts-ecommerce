@@ -1,0 +1,24 @@
+<h1>Cart</h1>
+
+<div class="productos-grid carrito-grid">
+{{#.}}
+  <div class="producto-card carrito-card">
+    <img alt="Image not loading" src="mostrar_imagen?id={{PRODUCTO_ID}}">
+
+    <div class="producto-info">
+      <p><span>Name:</span> {{NOMBRE}}</p>
+      <p><span>Price:</span> {{PRECIO}} €</p>
+      <p><span>Condition:</span> {{ESTADO}}</p>
+      <p><span>Quantity:</span> {{CANTIDAD}}</p>
+    </div>
+
+    <div class="producto-actions">
+      <a id-producto="{{PRODUCTO_ID}}" href="#" class="btn-quitar enlace-borrar-producto-carrito">Remove from cart</a>
+    </div>
+  </div>
+{{/.}}
+</div>
+
+<div class="producto-actions carrito-acciones">
+  <a href="#" class="btn-detalles btn-pedido" id="realizar_pedido">Place order</a>
+</div>

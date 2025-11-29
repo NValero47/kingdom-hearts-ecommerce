@@ -1,0 +1,40 @@
+<h1 class="pedido-titulo">注文手続き → ステップ4</h1>
+
+<div class="pedido-paso pedido-resumen">
+  <h2 class="pedido-subtitulo">注文内容の確認</h2>
+
+  <h3>商品一覧：</h3>
+  <div id="productos_pedido" class="productos-grid">
+    {{#productos}}
+    <div class="producto-card">
+      <img alt="画像を読み込めませんでした" src="mostrar_imagen?id={{PRODUCTO_ID}}">
+      <div class="producto-info">
+        <p><span>商品名：</span> {{NOMBRE}}</p>
+        <p><span>単価：</span> {{PRECIO}} €</p>
+        <p><span>状態：</span> {{ESTADO}}</p>
+        <p><span>数量：</span> {{CANTIDAD}}</p>
+      </div>
+    </div>
+    {{/productos}}
+  </div>
+
+  <div class="pedido-datos">
+    <h3>配送先情報：</h3>
+    <p><strong>氏名：</strong> {{nombreCompleto}}</p>
+    <p><strong>住所：</strong> {{direccion}}</p>
+    <p><strong>都道府県：</strong> {{provincia}}</p>
+
+    <h3>お支払い情報：</h3>
+    <p><strong>カード種類：</strong> {{tipoTarjetaTexto}}</p>
+    <p><strong>カード番号：</strong> {{numeroTarjeta}}</p>
+    <p><strong>名義人：</strong> {{titularTarjeta}}</p>
+
+    <h3>追加情報：</h3>
+    <p><strong>性格：</strong> {{personalidadTexto}}</p>
+    <p><strong>コメント：</strong> {{comentario}}</p>
+  </div>
+
+  <div class="pedido-acciones">
+    <button id="boton_confirmar_pedido" class="btn-confirmar">注文を確定する</button>
+  </div>
+</div>

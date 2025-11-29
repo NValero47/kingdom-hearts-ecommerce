@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{productos.titulo}">Products</title>
+<link rel="stylesheet" th:href="@{/css/admin.css}">
+</head>
+<body>
+
+<div th:insert="fragments/general.html :: menu"></div>
+
+<main class="admin-container">
+    <div class="header-actions">
+        <a class="btn-primary" href="registrarProducto"><span th:text="#{productos.registrar}"></span></a>
+    </div>
+
+    <div class="productos-grid">
+        <div class="producto-card" th:each="producto : ${productos}">
+            <img alt="No carga la imagen" th:src="@{${'../mostrar_imagen?id='+producto.id}}" class="producto-imagen">
+            <div class="producto-info">
+                <h3 th:text="${producto.nombre}"></h3>
+                <p><strong><span th:text="#{producto.precio}"></span>:</strong> <span th:text="${producto.precio}"></span> €</p>
+                <p><strong><span th:text="#{producto.descripcion}"></span>:</strong> <span th:text="${producto.descripcion}"></span></p>
+                <p><strong><span th:text="#{producto.estado}"></span>:</strong> <span th:text="${producto.estado}"></span></p>
+                <p><strong><span th:text="#{producto.tipo}"></span>:</strong> <span th:text="${producto.tipo}"></span></p>
+                <p><strong><span th:text="#{producto.stock}"></span>:</strong> <span th:text="${producto.stock}"></span></p>
+                <p><strong><span th:text="#{producto.categoria}"></span>:</strong><span th:text="${producto.categoria.nombre}"></span>
+</p>
+            </div>
+            <div class="producto-actions">
+                <a class="btn-danger" onClick="return confirm('¿Estas seguro?')" th:href="@{${'borrarProducto?id='+producto.id}}"><span th:text="#{acciones.borrar}"></span></a>
+                <a class="btn-secondary" th:href="@{${'editarProducto?id='+producto.id}}"><span th:text="#{acciones.editar}"></span></a>
+            </div>
+        </div>
+    </div>
+</main>
+
+</body>
+</html>

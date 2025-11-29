@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="#{titulo.admin}"></title>
+    <link rel="stylesheet" th:href="@{/css/admin.css}">
+</head>
+<body>
+<div th:fragment="menu">
+
+    <!-- Navbar principal -->
+    <nav class="navbar">
+        <div class="navbar-title"><span th:text="#{navbar.titulo}"></span></div>
+        <ul class="navbar-links">
+            <li><a href="../"><span th:text="#{enlaces.volver}"></span></a></li>
+            <li><a href="obtenerProductos"><span th:text="#{enlaces.productos}"></span></a></li>
+            <li><a href="obtenerUsuarios"><span th:text="#{enlaces.usuarios}"></span></a></li>
+            <li><a href="obtenerPedidos"><span th:text="#{enlaces.pedidos}"></span></a></li>
+            <li><a href="../logoutAdmin"><span th:text="#{enlaces.cerrarSesion}"></span></a></li>
+        </ul>
+    </nav>
+
+    <!-- Selector de idioma -->
+    <nav class="language-selector">
+        <span th:text="#{selector.idioma}"></span>
+        <a href="?idioma=es"><span>ESPAÑOL</span></a>
+        <a href="?idioma=en"><span>ENGLISH</span></a>
+        <a href="?idioma=jap"><span>日本語</span></a>
+    </nav>
+
+</div>
+</body>
+</html>

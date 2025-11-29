@@ -1,0 +1,25 @@
+<h1 class="pedido-titulo">Realizar pedido → Paso 2</h1>
+
+<div class="pedido-paso">
+  <h2 class="pedido-subtitulo">Introduce los datos de pago</h2>
+  <p class="pedido-aviso">NO INTRODUCIR DATOS REALES — APLICACIÓN EN PRUEBAS</p>
+
+  <form class="pedido-form" id="aceptar_paso_2">
+    
+    <label for="tipo_tarjeta">Tipo de tarjeta:</label>
+    <select id="tipo_tarjeta" required>
+      <option value="">Elegir tipo</option>
+      <option value="1">VISA</option>
+      <option value="2">MasterCard</option>
+    </select>
+
+    <label for="numero_tarjeta">Número de tarjeta:</label>
+    <input type="text" id="numero_tarjeta" required pattern="^([0-9]{4} ?){3}[0-9]{4}$" maxlength="19" inputmode="numeric" placeholder="XXXX XXXX XXXX XXXX">
+
+    <label for="titular_tarjeta">Titular de la tarjeta:</label>
+    <input type="text" id="titular_tarjeta" required minlength="3" maxlength="60" pattern="^(?!.* {2})[A-Za-zÁÉÍÓÚáéíóúÑñ ]{3,60}$" placeholder="Ej: Juan Pérez">
+
+    <input type="submit" class="btn-aceptar" value="ACEPTAR">
+
+  </form>
+</div>

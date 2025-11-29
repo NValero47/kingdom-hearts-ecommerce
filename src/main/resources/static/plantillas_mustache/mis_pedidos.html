@@ -1,0 +1,48 @@
+<h1>Pedidos</h1>
+
+<div class="productos-grid carrito-grid">
+{{#.}}
+  <div class="producto-card carrito-card">
+    <h2>Pedido #{{ID}}</h2>
+
+    <!-- Productos del pedido -->
+    <div class="productos-grid">
+      {{#PRODUCTOS}}
+      <div class="producto-card">
+        <img alt="No carga la imagen" src="mostrar_imagen?id={{PRODUCTO_ID}}">
+
+        <div class="producto-info">
+          <p><span>Nombre:</span> {{NOMBRE}}</p>
+          <p><span>Precio:</span> {{PRECIO}} €</p>
+          <p><span>Cantidad:</span> {{CANTIDAD}}</p>
+        </div>
+      </div>
+      {{/PRODUCTOS}}
+    </div>
+
+    <!-- Datos del envío -->
+    <div class="producto-info">
+      <p><span>Nombre completo:</span> {{NOMBRE_COMPLETO}}</p>
+      <p><span>Dirección:</span> {{DIRECCION}}</p>
+      <p><span>Portal:</span> {{PORTAL}}</p>
+      <p><span>Piso:</span> {{PISO}}</p>
+      <p><span>Teléfono:</span> {{TELEFONO}}</p>
+      <p><span>Estado:</span> {{ESTADO}}</p>
+    </div>
+
+    <!-- Datos del pago -->
+    <div class="producto-info">
+      <p><span>Titular tarjeta:</span> {{TITULAR_TARJETA}}</p>
+      <p><span>Número tarjeta:</span> {{NUMERO_TARJETA_MASKED}}</p>
+      <p><span>Tipo tarjeta:</span> {{TIPO_TARJETA_TEXTO}}</p>
+    </div>
+
+    <!-- Información del cliente -->
+    <div class="producto-info">
+      <p><span>Personalidad:</span> {{PERSONALIDAD_TEXTO}}</p>
+      <p><span>Comentario:</span> {{COMENTARIO}}</p>
+    </div>
+
+  </div>
+{{/.}}
+</div>

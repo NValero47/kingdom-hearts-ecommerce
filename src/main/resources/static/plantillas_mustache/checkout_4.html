@@ -1,0 +1,65 @@
+<h1 class="pedido-titulo">Realizar pedido → Paso 4</h1>
+
+<div class="pedido-paso pedido-resumen">
+	<h2 class="pedido-subtitulo">Resumen del pedido</h2>
+
+	<h3>Productos del pedido:</h3>
+	<div id="productos_pedido" class="productos-grid">
+		{{#productos}}
+		<div class="producto-card">
+			<img alt="No carga la imagen" src="mostrar_imagen?id={{PRODUCTO_ID}}">
+			<div class="producto-info">
+				<p>
+					<span>Nombre:</span> {{NOMBRE}}
+				</p>
+				<p>
+					<span>Precio por unidad:</span> {{PRECIO}} €
+				</p>
+				<p>
+					<span>Estado:</span> {{ESTADO}}
+				</p>
+				<p>
+					<span>Cantidad:</span> {{CANTIDAD}}
+				</p>
+			</div>
+		</div>
+		{{/productos}}
+	</div>
+
+	<div class="pedido-datos">
+		<h3>Datos de envío:</h3>
+		<p>
+			<strong>Nombre completo:</strong> {{nombreCompleto}}
+		</p>
+		<p>
+			<strong>Dirección:</strong> {{direccion}}
+		</p>
+		<p>
+			<strong>Provincia:</strong> {{provincia}}
+		</p>
+
+		<h3>Datos de pago:</h3>
+		<p>
+			<strong>Tipo de tarjeta:</strong> {{tipoTarjetaTexto}}
+		</p>
+		<p>
+			<strong>Número tarjeta:</strong> {{numeroTarjeta}}
+		</p>
+		<p>
+			<strong>Titular tarjeta:</strong> {{titularTarjeta}}
+		</p>
+
+		<h3>Datos adicionales:</h3>
+		<p>
+			<strong>Personalidad:</strong> {{personalidadTexto}}
+		</p>
+		<p>
+			<strong>Comentario:</strong> {{comentario}}
+		</p>
+	</div>
+	
+	<div class="pedido-acciones">
+		<button id="boton_confirmar_pedido" class="btn-confirmar">Confirmar
+			pedido</button>
+	</div>
+</div>

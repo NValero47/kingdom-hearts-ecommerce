@@ -1,0 +1,24 @@
+<h1>Products</h1>
+
+<div class="productos-grid">
+{{#array_productos}}
+  <div class="producto-card">
+    <img alt="Image not loading" src="mostrar_imagen?id={{ID}}">
+
+    <div class="producto-info">
+      <p><span>Name:</span> {{NOMBRE}}</p>
+      <p><span>Price:</span> {{PRECIO}} €</p>
+      <p><span>Description:</span> {{DESCRIPCION}}</p>
+      <p><span>Condition:</span> {{ESTADO}}</p>
+      <p><span>Type:</span> {{TIPO}}</p>
+      <p><span>Stock:</span> {{STOCK}}</p>
+      <p><span>Category:</span> {{NOMBRE_CATEGORIA}}</p>
+    </div>
+
+    <div class="producto-actions">
+      <a href="detallesProducto?id={{ID}}" class="btn-detalles">Show details</a>
+      <a href="#" class="enlace_comprar_producto" id-producto="{{ID}}">Add to cart</a>
+    </div>
+  </div>
+{{/array_productos}}
+</div>

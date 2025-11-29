@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>キングダム ハーツ ショップ</title>
+<link rel="stylesheet" href="css/public.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+</head>
+<body>
+
+	<header>
+		<div class="logo">
+			<img src="img/kh_logo.png" alt="Logo Kingdom Hearts">
+			<h1>キングダム ハーツ ショップ</h1>
+		</div>
+	</header>
+	
+	<nav>
+		<a id="enlace_productos" href="#">製品</a>
+		<a id="enlace_login" href="#">ログイン</a>
+		<a id="enlace_registro" href="#">登録する</a>
+		<a id="enlace_carrito" href="#">ショッピングカート</a>
+		<a id="enlace_pedidos" href="#">注文</a>
+		<a class="admin-link" href="admin/obtenerProductos">管理</a>
+	</nav>
+	
+	<nav class="nav-idiomas">
+	    <a href="?idioma=es">スペイン語</a>
+	    <a href="?idioma=en">英語</a>
+	    <a href="?idioma=jap">日本語</a>
+	</nav>
+	
+	<div id="login_usuario">身元不明のユーザー</div>
+	
+	<div id="contenedor"></div>
+	
+	<footer>
+    	&copy; © 2025 キングダムハーツショップ — 無断複写・転載を禁じます
+	</footer>
+	
+	<!-- Incluir los archivos de jascript necesarios -->
+	<script src="librerias_js/jquery.js"></script>
+	<script src="librerias_js/mustache.js"></script>
+	<script src="javascript/globales.js"></script>
+	<script>
+		idioma = "_jap"
+	</script>
+	<script src="javascript/cargar_plantillas.js"></script>
+	<script src="javascript/funciones_menu.js"></script>
+	<script th:inline="javascript">
+	    let usuarioId = /*[[${usuarioId}]]*/ null;
+	</script>
+	<script>
+	    if (usuarioId !== null) {
+	        $.get("usuariosREST/getNombre?id=" + usuarioId, function(nombre) {
+	            nombre_login = nombre;
+	            $("#login_usuario").html("Hola " + nombre);
+	    	    let textoCerrar = "Cerrar sesión";
+	    		if (idioma === "_en") {
+	    		    textoCerrar = "Log out";
+	    		} else if (idioma === "_jap") {
+	    		    textoCerrar = "ログアウト";
+	    		}
+	            $("#enlace_login").html(textoCerrar);
+	        });
+	    }
+	</script>
+	<script src="javascript/main.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+</body>
+</html>

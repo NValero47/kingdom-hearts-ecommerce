@@ -1,0 +1,736 @@
+@charset "UTF-8";
+
+/* ==== RESET Y FUENTE ==== */
+html {
+    height: 100%;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* ==== ESTRUCTURA GENERAL ==== */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: radial-gradient(circle at top, #dbe8ff 0%, #eef2f7 60%);
+    color: #333;
+    align-items: center;        /* ✅ centrado horizontal */
+}
+/* ==== HEADER ==== */
+header {
+    width: 100%;
+    background: linear-gradient(135deg, #001f3f, #003366);
+    color: white;
+    padding: 15px 0;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+    text-align: center;
+}
+
+header .logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+header img {
+    height: 60px;
+    width: auto;
+    filter: drop-shadow(0 0 5px #00bfff);
+}
+
+header h1 {
+    font-family: "Cinzel", serif;
+    font-size: 2rem;
+    letter-spacing: 1px;
+    text-shadow: 0 0 10px rgba(255,255,255,0.3);
+}
+
+/* ==== NAV ==== */
+nav {
+    margin: 20px 0;
+    background: #ffffffcc;
+    border-radius: 12px;
+    padding: 12px 25px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #1e2a38;
+    font-weight: 600;
+    padding: 10px 18px;
+    border-radius: 8px;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+nav a:hover {
+    color: #0056b3;
+    background: #e9f1ff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* línea decorativa en hover */
+nav a::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background: #007bff;
+    transition: width 0.3s ease;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+nav .admin-link {
+    color: #a60000;
+    font-weight: bold;
+}
+
+nav .admin-link:hover {
+    background: #ffd6d6;
+    color: #a60000;
+}
+
+nav .admin-link::after {
+    background: #a60000;
+}
+
+/* ==== LOGIN USUARIO ==== */
+#login_usuario, 
+#carrito_usuario {
+    font-weight: 500;
+    color: #333;
+    margin: 10px 0 20px;
+    background: #fff;
+    padding: 8px 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+/* ==== CONTENEDOR PRINCIPAL ==== */
+#contenedor {
+    width: 90%;
+    max-width: 1200px;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    padding: 30px;
+    min-height: 300px;
+    margin-bottom: 40px;
+    transition: all 0.3s ease;
+}
+
+main, #contenedor {
+    flex: 1 0 auto;
+}
+
+/* ==== FOOTER ==== */
+footer {
+    width: 100%;
+    background: #1e2a38;
+    color: #fff;
+    text-align: center;
+    padding: 15px;
+    font-size: 0.9rem;
+    box-shadow: 0 -3px 8px rgba(0,0,0,0.2);
+    margin-top: auto; /* 👈 Esto es lo importante */
+}
+
+/* ==== ANIMACIONES OPCIONALES ==== */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+#contenedor {
+    animation: fadeIn 0.6s ease;
+}
+
+/* ==== PRODUCTOS ==== */
+.productos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto 40px;
+    padding: 20px;
+}
+
+/* Cada producto */
+.producto-card {
+    background: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 15px;
+}
+
+.producto-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+/* Imagen del producto */
+.producto-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: contain; /* mantiene proporciones sin deformar */
+    background: #f6f8fb;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+/* Información */
+.producto-info {
+    flex: 1;
+}
+
+.producto-info p {
+    margin: 6px 0;
+    font-size: 0.95rem;
+    color: #333;
+}
+
+.producto-info span {
+    font-weight: bold;
+    color: #0056b3;
+}
+
+/* Botón comprar */
+.enlace_comprar_producto {
+    display: inline-block;
+    background: #007bff;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.enlace_comprar_producto:hover {
+    background: #0056b3;
+    transform: scale(1.05);
+}
+
+/* ==== BOTONES ==== */
+.producto-actions {
+    display: flex;
+    justify-content: space-around;
+    gap: 10px;
+    margin-top: 12px;
+}
+
+.producto-actions a {
+    padding: 8px 16px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.9rem;
+    transition: background 0.3s ease, transform 0.2s ease;
+    margin-top: 10px;
+}
+
+/* Botón ver detalles */
+.btn-detalles {
+	display: inline-block;
+    background: #f1f1f1;
+    color: #333;
+    border: 1px solid #ccc;
+}
+
+.btn-detalles:hover {
+    background: #e0e0e0;
+    border-color: #999;
+}
+
+/* ==== CARRITO ==== */
+.carrito-grid {
+    margin-top: 20px;
+}
+
+.carrito-card img {
+    height: 180px;
+    object-fit: contain;
+}
+
+.btn-quitar {
+    background: #dc3545;
+    color: white;
+}
+
+.btn-quitar:hover {
+    background: #a71d2a;
+    transform: scale(1.05);
+}
+
+.carrito-acciones {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.btn-pedido {
+    background: #28a745;
+    color: white;
+    font-size: 1rem;
+    padding: 12px 25px;
+}
+
+.btn-pedido:hover {
+    background: #218838;
+}
+
+/* ==== FORMULARIOS ==== */
+form {
+    background: #ffffff;
+    padding: 2rem 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    width: 90%;
+    max-width: 450px;
+    margin: 1rem auto 3rem auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* Labels */
+form label {
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 0.3rem;
+    display: block;
+}
+
+/* Inputs */
+form input[type="text"],
+form input[type="email"],
+form input[type="password"],
+form input[type="number"] {
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    transition: border 0.2s ease, box-shadow 0.2s ease;
+    width: 100%;
+}
+
+form input:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0,123,255,0.3);
+    outline: none;
+}
+
+/* Checkbox */
+form input[type="checkbox"] {
+    margin-right: 0.5rem;
+    accent-color: #007bff;
+}
+
+/* Submit Button */
+form input[type="submit"] {
+    margin-top: 0.5rem;
+    background: #007bff;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+form input[type="submit"]:hover {
+    background: #0056b3;
+    transform: translateY(-2px);
+}
+
+/* Mensajes de error o info (opcional) */
+.form-message {
+    color: #e64545;
+    font-size: 0.9rem;
+    margin-top: -0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+/* ==== PEDIDO GENERAL ==== */
+.pedido-titulo {
+    text-align: center;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: #003366;
+}
+
+.pedido-paso {
+    width: 90%;
+    max-width: 600px;
+    background: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    padding: 30px;
+    margin: 20px auto 40px;
+    animation: fadeIn 0.6s ease;
+}
+
+.pedido-subtitulo {
+    text-align: center;
+    color: #0056b3;
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+}
+
+.pedido-aviso {
+    text-align: center;
+    color: #a60000;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* ==== FORMULARIO DE PEDIDO ==== */
+.pedido-form label {
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 0.3rem;
+    display: block;
+}
+
+.pedido-form input,
+.pedido-form select {
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    width: 100%;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    transition: border 0.2s ease, box-shadow 0.2s ease;
+}
+
+.pedido-form input:focus,
+.pedido-form select:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0,123,255,0.3);
+    outline: none;
+}
+
+/* ==== BOTONES ==== */
+.btn-aceptar,
+.btn-confirmar {
+    display: inline-block;
+    background: #007bff;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 25px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.btn-aceptar:hover,
+.btn-confirmar:hover {
+    background: #0056b3;
+    transform: translateY(-2px);
+}
+
+/* ==== RESUMEN DEL PEDIDO ==== */
+.pedido-resumen h3 {
+    color: #003366;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.pedido-datos {
+    background: #f6f8fb;
+    border-radius: 10px;
+    padding: 15px 20px;
+    margin-top: 15px;
+    box-shadow: inset 0 0 5px rgba(0,0,0,0.05);
+}
+
+.pedido-acciones {
+    text-align: center;
+    margin-top: 25px;
+}
+
+/* ==== PASO 3 DEL PEDIDO ==== */
+.pedido-texto {
+    text-align: center;
+    color: #333;
+    font-weight: 500;
+    margin-bottom: 20px;
+    font-size: 1rem;
+}
+
+/* Textarea estilo coherente con inputs */
+.pedido-form textarea {
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    width: 100%;
+    resize: none;
+    transition: border 0.2s ease, box-shadow 0.2s ease;
+    margin-bottom: 1rem;
+}
+
+.pedido-form textarea:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0,123,255,0.3);
+    outline: none;
+}
+
+/* ==== NAV IDIOMAS (COMPACTO) ==== */
+.nav-idiomas {
+    display: flex;
+    gap: 6px;
+
+    /* ELIMINAMOS MÁRGENES EXTRAS PARA QUE NO SUME ESPACIO */
+    margin: 5px 0 10px 0;
+
+    padding: 4px 8px;
+    background: #f4f6fb; 
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+
+    /* Forzamos a que no herede espacios extra del <body> */
+    line-height: 1;
+}
+
+/* Estilo de los idiomas tipo pills */
+.nav-idiomas a {
+    text-decoration: none;
+    color: #2a3444;
+    padding: 5px 10px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    background: #ffffff;
+    border: 1px solid #d3ddee;
+    border-radius: 12px;
+    transition: all 0.2s ease;
+}
+
+/* Hover sutil */
+.nav-idiomas a:hover {
+    background: #e8efff;
+    border-color: #b2c5ff;
+    color: #003d80;
+    transform: translateY(-1px);
+}
+
+/* Sin línea debajo (para diferenciar del nav principal) */
+.nav-idiomas a::after {
+    display: none;
+}
+
+/* === DETALLE DE PRODUCTO === */
+
+.producto-detalle-layout {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.galeria {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.imagen-principal {
+    width: 380px;
+    height: 380px;
+    object-fit: contain;
+    background: #f6f8fb;
+    border-radius: 12px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.imagenes-secundarias {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.imagenes-secundarias .miniatura {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    background: #fff;
+    border-radius: 8px;
+    padding: 4px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.imagenes-secundarias .miniatura:hover {
+    transform: scale(1.07);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.producto-detalle-info {
+    max-width: 400px;
+    background: #ffffff;
+    padding: 20px 25px;
+    border-radius: 12px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.producto-detalle-info p {
+    margin-bottom: 12px;
+    font-size: 1rem;
+}
+
+/* RESPONSIVE */
+@media (max-width: 800px) {
+    .producto-detalle-layout {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .producto-detalle-info {
+        max-width: 90%;
+    }
+}
+
+/* ==== PEDIDOS GRID ==== */
+.pedidos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto 40px;
+    padding: 20px;
+}
+
+/* Cada pedido como tarjeta */
+.pedido-card {
+    background: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 15px;
+}
+
+.pedido-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+/* Productos dentro del pedido */
+.pedido-card .productos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    margin-bottom: 15px;
+}
+
+/* Tarjetas de productos dentro del pedido */
+.pedido-card .producto-card {
+    background: #f6f8fb;
+    border-radius: 10px;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.05);
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Imagen de producto */
+.pedido-card .producto-card img {
+    width: 100%;
+    height: 120px;
+    object-fit: contain;
+    margin-bottom: 10px;
+}
+
+/* Información dentro de la tarjeta */
+.pedido-card .producto-info p {
+    margin: 4px 0;
+    font-size: 0.9rem;
+    color: #333;
+}
+
+.pedido-card .producto-info span {
+    font-weight: bold;
+    color: #0056b3;
+}
+
+/* Secciones de info del pedido */
+.pedido-card .producto-info {
+    text-align: left;
+    margin: 10px 0;
+}
+
+/* Botones dentro del pedido */
+.pedido-card .producto-actions {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.pedido-card .producto-actions a {
+    padding: 8px 16px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.9rem;
+    background: #28a745;
+    color: white;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.pedido-card .producto-actions a:hover {
+    background: #218838;
+    transform: scale(1.05);
+}
+
+/* Datos de envío, pago e info del cliente */
+.pedido-card .producto-info {
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    box-shadow: inset 0 0 5px rgba(0,0,0,0.05);
+}
+
+/* ==== RESPONSIVE ==== */
+@media (max-width: 500px) {
+    form {
+        padding: 1.5rem 1.8rem;
+    }
+}

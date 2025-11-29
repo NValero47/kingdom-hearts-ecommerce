@@ -1,0 +1,21 @@
+<h1>登録情報を入力してください</h1>
+
+<form id="form_registro" action="usuariosREST/registrar" method="post">
+
+    <label for="nombre">名前：</label>
+    <input type="text" id="nombre" name="nombre" required />
+
+    <label for="email">電子メール：</label>
+    <input type="email" id="email" name="email" required />
+
+    <label for="pass">パスワード：</label>
+    <input type="password" id="pass" name="pass" minlength="4" maxlength="20" required />
+
+    <label for="ciudad">市区町村：</label>
+    <input type="text" id="ciudad" name="ciudad" required />
+
+    <label for="codigoPostal">郵便番号：</label>
+    <input type="number" id="codigoPostal" name="codigoPostal" required />
+
+    <input type="submit" value="登録"/>
+</form>

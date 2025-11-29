@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="#{pedidos.detalleTitulo}">Detalle del pedido</title>
+    <link rel="stylesheet" th:href="@{/css/admin.css}">
+</head>
+<body>
+
+<div th:insert="fragments/general.html :: menu"></div>
+
+<main class="admin-container">
+    <h1><span th:text="#{pedidos.detalleTitulo}"></span></h1>
+
+    <!-- Productos del pedido -->
+    <section class="productos-grid">
+        <div class="producto-card" th:each="productoPedido : ${pedido.productosPedido}">
+            <img alt="No carga la imagen" th:src="@{${'../mostrar_imagen?id='+productoPedido.producto.id}}" class="producto-imagen">
+            <div class="producto-info">
+                <h3 th:text="${productoPedido.producto.nombre}"></h3>
+                <p><strong><span th:text="#{producto.precio}"></span>:</strong> <span th:text="${productoPedido.producto.precio}"></span> €</p>
+                <p><strong>Cantidad:</strong> <span th:text="${productoPedido.cantidad}"></span></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Detalles del envío -->
+    <section class="detalle-seccion">
+        <h2><span th:text="#{pedidos.detallesEnvio}"></span></h2>
+        <div class="detalle-grid">
+            <p><strong><span th:text="#{pedidos.nombre}"></span>:</strong> <span th:text="${pedido.nombreCompleto}"></span></p>
+            <p><strong><span th:text="#{pedidos.direccion}"></span>:</strong> <span th:text="${pedido.direccion}"></span></p>
+            <p><strong><span th:text="#{pedidos.estadoPedido}"></span>:</strong> <span th:text="${pedido.estado}"></span></p>
+            <p><strong><span th:text="#{pedidos.portal}"></span>:</strong> <span th:text="${pedido.portal}"></span></p>
+            <p><strong><span th:text="#{pedidos.piso}"></span>:</strong> <span th:text="${pedido.piso}"></span></p>
+            <p><strong><span th:text="#{pedidos.telefono}"></span>:</strong> <span th:text="${pedido.telefono}"></span></p>
+        </div>
+    </section>
+
+    <!-- Detalles del pago -->
+    <section class="detalle-seccion">
+        <h2><span th:text="#{pedidos.detallesPago}"></span></h2>
+        <div class="detalle-grid">
+            <p><strong><span th:text="#{pedidos.titular}"></span>:</strong> <span th:text="${pedido.titularTarjeta}"></span></p>
+            <p><strong><span th:text="#{pedidos.numeroTarjeta}"></span>:</strong> <span th:text="${'**** **** **** ' + #strings.substring(pedido.numeroTarjeta, pedido.numeroTarjeta.length() - 4)}"></span></p>
+            <p><strong><span th:text="#{pedidos.tipo}"></span>:</strong> <span th:text="${tiposTarjeta[pedido.tipoTarjeta]}"></span></p>
+        </div>
+    </section>
+
+    <!-- Detalles del cliente -->
+    <section class="detalle-seccion">
+        <h2><span th:text="#{pedidos.detallesCliente}"></span></h2>
+        <div class="detalle-grid">
+            <p><strong><span th:text="#{pedidos.personalidad}"></span>:</strong> <span th:text="${personalidades[pedido.personalidad]}"></span></p>
+            <p><strong><span th:text="#{pedidos.comentario}"></span>:</strong> <span th:text="${pedido.comentario}"></span></p>
+        </div>
+    </section>
+    
+    <input type="hidden" id="id_pedido" th:field="${pedido.id}">
+    
+    <section class="detalle-seccion">
+        <h2><span th:text="#{pedidos.estadoPedido}"></span></h2>
+        <select id="select_estado" th:field="${pedido.estado}">
+            <option th:each="e : ${estados}" th:text="${e.value}" th:value="${e.key}"></option>
+        </select>
+    </section>
+
+    <div class="form-actions">
+        <a class="btn-secondary" href="obtenerPedidos"><span th:text="#{enlaces.volver}">Volver al listado</span></a>
+    </div>
+</main>
+
+<script src="../librerias_js/jquery.js"></script>
+<script>
+    $("#select_estado").change(function(e){
+        let estado = $("#select_estado").find(":selected").val();
+        let idPedido = $("#id_pedido").val();
+        $.post("pedidosREST/actualizarEstadoPedido", {
+            estado: estado,
+            id: idPedido
+        }).done(function(res){
+            alert(res);
+        });
+    });
+</script>
+</body>
+</html>

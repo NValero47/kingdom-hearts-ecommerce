@@ -1,0 +1,24 @@
+<h1 class="pedido-titulo">Place order → Step 2</h1>
+
+<div class="pedido-paso">
+  <h2 class="pedido-subtitulo">Enter your payment details</h2>
+  <p class="pedido-aviso">DO NOT ENTER REAL DATA — TESTING APPLICATION</p>
+
+  <form class="pedido-form" id="aceptar_paso_2">
+
+    <label for="tipo_tarjeta">Card type:</label>
+    <select id="tipo_tarjeta" required>
+      <option value="">Choose type</option>
+      <option value="1">VISA</option>
+      <option value="2">MasterCard</option>
+    </select>
+
+    <label for="numero_tarjeta">Card number:</label>
+    <input type="text" id="numero_tarjeta" required placeholder="XXXX XXXX XXXX XXXX">
+
+    <label for="titular_tarjeta">Cardholder:</label>
+    <input type="text" id="titular_tarjeta" required placeholder="Ex: John Smith">
+
+    <input type="submit" class="btn-aceptar" value="ACCEPT">
+  </form>
+</div>

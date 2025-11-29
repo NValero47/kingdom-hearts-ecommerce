@@ -1,0 +1,23 @@
+<h1 class="pedido-titulo">注文手続き → ステップ3</h1>
+
+<div class="pedido-paso">
+  <h2 class="pedido-subtitulo">注文を確定する前に…</h2>
+  <p class="pedido-texto">より良いサービスをご提供するため、少しだけお客様について教えてください。</p>
+
+  <form class="pedido-form" id="aceptar_paso_3">
+
+    <label for="campo_personalidad">ご自身をどのように表現しますか？</label>
+    <select id="campo_personalidad" required>
+      <option value="">選択してください</option>
+      <option value="1">落ち着いて責任感があるタイプ</option>
+      <option value="2">明るくてエネルギッシュなタイプ</option>
+      <option value="3">創造的で個性的なタイプ</option>
+      <option value="4">日によっていろいろ</option>
+    </select>
+
+    <label for="campo_comentario">コメントがあればご記入ください：</label>
+    <textarea id="campo_comentario" maxlength="300" placeholder="例：梱包が丁寧だと嬉しいです…" rows="4"></textarea>
+
+    <input type="submit" class="btn-aceptar" value="確認">
+  </form>
+</div>
