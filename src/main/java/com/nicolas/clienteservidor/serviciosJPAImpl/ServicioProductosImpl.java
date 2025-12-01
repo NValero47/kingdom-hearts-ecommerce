@@ -52,6 +52,8 @@ public class ServicioProductosImpl implements ServicioProductos{
 
 	@Override
 	public void borrarProducto(long id) {
+		entityManager.createNativeQuery("DELETE FROM PRODUCTO_IMAGENES WHERE PRODUCTO_ID = :id").setParameter("id", id).executeUpdate();
+		
 		// Antes de borrar el producto debemos eliminar todas las referencias al mismo en el carrito y pedidos
 		entityManager.createNativeQuery("DELETE FROM CARRITO WHERE PRODUCTO_ID = :id").setParameter("id", id).executeUpdate();
 		entityManager.createNativeQuery("DELETE FROM PRODUCTOS_PEDIDO WHERE PRODUCTO_ID = :id").setParameter("id", id).executeUpdate();

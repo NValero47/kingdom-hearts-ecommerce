@@ -51,8 +51,9 @@ public class ServicioUsuarioImpl implements ServicioUsuario {
 	public void borrarUsuario(int id) {
 		Usuario usuarioBorrar = obtenerUsuarioPorId(id);
 		if(usuarioBorrar != null) {
+			entityManager.createNativeQuery("DELETE FROM PRODUCTOS_PEDIDO WHERE PEDIDO_ID IN (SELECT ID FROM PEDIDO WHERE USUARIO_ID = :id)").setParameter("id", id).executeUpdate();
+			entityManager.createNativeQuery("DELETE FROM PEDIDO WHERE USUARIO_ID = :id").setParameter("id", id).executeUpdate();
 			entityManager.createNativeQuery("DELETE FROM CARRITO WHERE USUARIO_ID = :id").setParameter("id", id).executeUpdate();
-			entityManager.createNativeQuery("DELETE FROM PRODUCTOS_PEDIDO WHERE USUARIO_ID = :id").setParameter("id", id).executeUpdate();
 			entityManager.remove(usuarioBorrar);
 		}
 	}
